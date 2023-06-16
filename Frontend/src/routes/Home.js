@@ -3,7 +3,7 @@ import Footer from '../components//footer/Footer'
 import Header from '../components/header/Header'
 import Carousel from '../components/carousel/Carousel'
 // import Books from '../components/books/Books'
-// import FilterPanel from '../components/filterPanel/FilterPanel'
+import FilterPanel from '../components/filterPanel/FilterPanel'
 
 const Home = () => {
 
@@ -12,10 +12,10 @@ const Home = () => {
             {/* <Navbar /> */}
             <Header />
             <Carousel />
-            {/* <div style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
                 <FilterPanel />
-                <Books />
-            </div> */}
+                {/* <Books /> */}
+            </div>
             <Footer />
         </>
     )

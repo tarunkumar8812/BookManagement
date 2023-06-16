@@ -1,0 +1,124 @@
+.filter_panel_container {
+    width: 13vw;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.left {
+    background-color: rgb(255, 255, 255);
+    border-right: 1px solid #d5d4d4;
+    height: 100%;
+    min-width: 180px;
+    padding-left: 5px;
+    margin-top: 0px;
+
+}
+
+.reset {
+    margin: auto;
+    /* display: flex;
+    align-items: end;
+    justify-content: end; */
+}
+
+.reset p {
+    border: 1px solid black;
+    margin-top: 10px;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: cadetblue;
+}
+
+.reset p:hover {
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+}
+
+
+.search-by {
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.search-by ul li {
+    width: 100%;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 3px;
+    text-transform: capitalize;
+}
+
+.search-by ul li:hover {
+    /* border-top: 1px solid rgb(49, 33, 33); */
+    /* border-left: 6px solid red; */
+    background-color: rgb(255, 255, 255);
+}
+
+.showMore {
+    position: absolute;
+    right: 10px;
+}
+
+.showMore p {
+    color: black;
+    text-decoration: underline;
+    font-size: 12px;
+}
+
+.showMore p:hover {
+    cursor: pointer;
+    color: red;
+
+}
+
+.right {
+    /* position: absolute; */
+    /* left: 200px; */
+    width: 75%;
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-left: 0.5px solid rgb(131, 130, 130);
+
+}
+
+.top {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.top lable {
+    width: 60%;
+}
+
+.bottom {
+    /* position: absolute; */
+    /* left: 200px; */
+    /* width: 75%; */
+    /* background-color: rgb(116, 176, 127); */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    /* justify-content: center; */
+    /* padding: 20px; */
+}
+
+lable {
+    margin-bottom: 20px;
+}
+
+lable h2 {
+    text-transform: capitalize;
+}
+
+h3 {
+    /* margin-top: 15px; */
+    padding-top: 15px;
+    font-size: medium;
+}
