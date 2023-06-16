@@ -133,10 +133,12 @@ const getBooks = async function (req, res) {
     try {
         let bookId = req.body
         console.log("req.query", req.query);
-        const { filter, discount, ratings, minPrice, maxPrice } = JSON.parse(req.query.filter)
+        const query = JSON.parse(req.query.filter)
+        const { filter, discount, ratings, minPrice, maxPrice } = query
 
+        console.log(query);
         console.log(filter);
-        console.log(JSON.parse(req.query.filter));
+        // console.log(JSON.parse(req.query.filter));
 
 
         // const f = JSON.parse(filter)
@@ -181,4 +183,4 @@ const getBooks = async function (req, res) {
     }
 }
 
-module.exports = { getBooks, groupData ,books}
+module.exports = { getBooks, groupData, books }
