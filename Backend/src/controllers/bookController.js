@@ -132,11 +132,11 @@ const groupData = async function (req, res) {
 const getBooks = async function (req, res) {
     try {
         let bookId = req.body
-        // console.log("req.query", req.query);
-        // const { filter, discount, ratings, minPrice, maxPrice } = JSON.parse(req.query.filter)
+        console.log("req.query", req.query);
+        const { filter, discount, ratings, minPrice, maxPrice } = JSON.parse(req.query.filter)
 
-        // console.log(filter);
-        // console.log(JSON.parse(req.query.filter));
+        console.log(filter);
+        console.log(JSON.parse(req.query.filter));
 
 
         // const f = JSON.parse(filter)
@@ -148,18 +148,18 @@ const getBooks = async function (req, res) {
 
         // let book = await bookModel.find({ $or: [{ title: search }, { author: search }, { publisher: search }, { ISBN: search }] })
         // let user = await userModel.find({})//.select({ ratings: 1, author: 1, category: 1, price: 1 })
-        let book = await bookModel.find({})//.select({ ratings: 1, author: 1, category: 1, price: 1 })
+        // let book = await bookModel.find({})//.select({ ratings: 1, author: 1, category: 1, price: 1 })
 
         // let book = await bookModel.find()//.select({ title: 1, ratings: 1, author: 1, category: 1, price: 1, discountPercent: 1, language: 1, _id: 0 })
 
 
-        // let book = await bookModel.find({
-        //     ...filter,
-        //     ratings: { $gte: ratings || 1 },
-        //     discountPercent: { $gte: discount || 0 },
-        //     price: { $gte: minPrice || 1, $lte: maxPrice || 9999 }
-        // }).
-        //     select({ description: 0, excerpt: 0, thumbnail: 0, tags: 0, deletedAt: 0, releasedAt: 0, isDeleted: 0, createdAt: 0, updatedAt: 0, __v: 0, })
+        let book = await bookModel.find({
+            ...filter,
+            ratings: { $gte: ratings || 1 },
+            discountPercent: { $gte: discount || 0 },
+            price: { $gte: minPrice || 1, $lte: maxPrice || 9999 }
+        }).
+            select({ description: 0, excerpt: 0, thumbnail: 0, tags: 0, deletedAt: 0, releasedAt: 0, isDeleted: 0, createdAt: 0, updatedAt: 0, __v: 0, })
 
         // select({ ratings: 1, author: 1, category: 1, price: 1, discountPercent: 1, language: 1, _id: 0 })
 
