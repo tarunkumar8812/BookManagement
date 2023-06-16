@@ -47,24 +47,24 @@ const getBooks = async function (req, res) {
         // if (!ObjectId(bookId)) return res.status(400).send({ status: false, message: " Invalid bookId" })
 
         // let book = await bookModel.find({ $or: [{ title: search }, { author: search }, { publisher: search }, { ISBN: search }] })
-        let user = await userModel.find({})//.select({ ratings: 1, author: 1, category: 1, price: 1 })
-        let book = await bookModel.find({})//.select({ ratings: 1, author: 1, category: 1, price: 1 })
+        // let user = await userModel.find({})//.select({ ratings: 1, author: 1, category: 1, price: 1 })
+        // let book = await bookModel.find({})//.select({ ratings: 1, author: 1, category: 1, price: 1 })
 
         // let book = await bookModel.find()//.select({ title: 1, ratings: 1, author: 1, category: 1, price: 1, discountPercent: 1, language: 1, _id: 0 })
 
 
-        // let book = await bookModel.find({
-        //     ...filter,
-        //     ratings: { $gte: ratings || 1 },
-        //     discountPercent: { $gte: discount || 0 },
-        //     price: { $gte: minPrice || 1, $lte: maxPrice || 9999 }
-        // }).
-        //     select({ description: 0, excerpt: 0, thumbnail: 0, tags: 0, deletedAt: 0, releasedAt: 0, isDeleted: 0, createdAt: 0, updatedAt: 0, __v: 0, })
+        let book = await bookModel.find({
+            ...filter,
+            ratings: { $gte: ratings || 1 },
+            discountPercent: { $gte: discount || 0 },
+            price: { $gte: minPrice || 1, $lte: maxPrice || 9999 }
+        }).
+            select({ description: 0, excerpt: 0, thumbnail: 0, tags: 0, deletedAt: 0, releasedAt: 0, isDeleted: 0, createdAt: 0, updatedAt: 0, __v: 0, })
 
         // select({ ratings: 1, author: 1, category: 1, price: 1, discountPercent: 1, language: 1, _id: 0 })
         
-        console.log(user, user.length);
-        console.log(book, book.length);
+        // console.log(user, user.length);
+        // console.log(book, book.length);
         // console.log(JSON.parse(req.query.filter));
 
         // if (!user) return res.status(404).send({ status: false, message: "user not found" })

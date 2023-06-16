@@ -4,9 +4,9 @@ const { createUser, userLogin } = require('../controllers/userController')
 const { getBooks, groupData } = require('../controllers/bookController')
 
 
-// router.get('/', (req, res) => {
-//     return res.status(200).send({ status: true, message: "Book Management App Server is working..." })
-// })
+router.get('/', (req, res) => {
+    return res.status(200).json({ status: true, message: "Book Management App Server is working..." })
+})
 
 //<--------------------------- User API's ---------------------------->
 router.post("/user/createUser", createUser)
