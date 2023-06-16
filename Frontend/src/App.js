@@ -1,35 +1,24 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import logo from './logo.svg';
 import './App.css';
-import Home from './routes/Home'
-import Signup from './routes/Signup'
-import Login from './routes/Login';
-import SearchResults from './routes/SearchResults';
-// import GetBook from './routes/GetBook';
-import Payment from './routes/Payment';
-import Cart from './routes/Cart';
-import Form from './routes/Form';
-import NotFound from './routes/NotFound';
-import Tables from './routes/Tables';
 
 function App() {
-
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='form' element={<Form />} />
-          <Route path='tables' element={<Tables />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/signup' element={<Signup />} />
-          <Route path='/searchresults' element={<SearchResults />} />
-          {/* <Route path='/getbook' element={<GetBook />} /> */}
-          <Route path='/payment' element={<Payment />} />
-          <Route path='/cart' element={<Cart />} />
-          <Route path='/*' element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          welcome sir, hope you are fit and fine
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
   );
 }
 
