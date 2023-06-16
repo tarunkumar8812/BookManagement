@@ -131,13 +131,13 @@ const groupData = async function (req, res) {
 
 const getBooks = async function (req, res) {
     try {
-        let bookId = req.body
-        console.log("req.query", req.query);
+        // let bookId = req.body
+        // console.log("req.query", req.query);
         const query = JSON.parse(req.query.filter)
         const { filter, discount, ratings, minPrice, maxPrice } = query
 
-        console.log(query);
-        console.log(filter);
+        // console.log(query);
+        // console.log(filter);
         // console.log(JSON.parse(req.query.filter));
 
 
