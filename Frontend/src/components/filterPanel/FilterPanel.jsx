@@ -65,7 +65,7 @@ const FilterPanel = () => {
             }
         } else {
             if (field === "ratings") {
-                console.log("ratings");
+                // console.log("ratings");
                 if (ratings === value) {
                     setRatings(null)
                 } else {
@@ -73,13 +73,13 @@ const FilterPanel = () => {
                 }
                 console.log("---->>", field, value);
             } else if (field === "discount") {
-                console.log("discount");
+                // console.log("discount");
                 if (discount === value) {
                     setDiscount(null)
                 } else {
                     setDiscount(value)
                 }
-                console.log("---->>", field, value);
+                // console.log("---->>", field, value);
             }
         }
         // dispatch({ type: "RESET_SEARCH", payload: { newSearch: "", data: location.state.data } })
@@ -183,9 +183,9 @@ const FilterPanel = () => {
 
                     </ul>
                 </div>
-            </div >
+            </div>
 
-        </div >
+        </div>
     )
 }
 

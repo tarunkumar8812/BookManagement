@@ -77,7 +77,7 @@ const Card1 = ({ heading, field, val, sort }) => {
                             .sort((a, b) => sort ? b[field] - a[field] : "")
                             .map((book) => {
                                 return (<>
-                                    <div className="book_box" onClick={() => { navigate('/getbook', { state: "book" }) }}>
+                                    <div className="book_box" onClick={() => { navigate('/getbook', { state: book }) }}>
                                         <div className="book_img_container">
                                             <img src={book?.bookCover} alt="bookcover"></img>
                                         </div>
