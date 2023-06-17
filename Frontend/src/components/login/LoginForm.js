@@ -4,14 +4,14 @@ import "./loginform.css"
 import { AuthContext } from '../../context/AuthContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
-
+import axios from "axios";
 
 
 const Loginform = () => {
     const location = useLocation()
     const navigate = useNavigate()
     const [credential, setCredential] = useState({ email: "", password: "" })
-    console.log(location.state);
+    // console.log(location.state);
 
     // to make input field  dynamic
     const onChange = (e) => {
@@ -25,21 +25,17 @@ const Loginform = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         authDispatch({ type: "LOGIN_START" })
-        const response = await fetch("https://silly-wisp-bcad1a.netlify.app/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email: credential.email, password: credential.password }) // converting simple object to json format
-        })
 
-        const json = await response.json()
-
-        if (!json.status) {
-            authDispatch({ type: "LOGIN_FAILURE", payload: json.message })
-        }
-        else {
-            authDispatch({ type: "LOGIN_SUCCESS", payload: json.data })
+        await axios.post("https://silly-wisp-bcad1a.netlify.app/user/login", {
+            email: credential.email, password: credential.password
+        }).then((response) => {
+            // console.log("response", response);
+            authDispatch({ type: "LOGIN_SUCCESS", payload: response.data })
             navigate(location.state || "/")
-        }
+        }, (error) => {
+            // console.log(error.message);
+            authDispatch({ type: "LOGIN_FAILURE", payload: "opps wrong credentials!!" })
+        });
     }
 
     return (

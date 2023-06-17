@@ -63,7 +63,7 @@ const createUser = async function (req, res) {
 const userLogin = async function (req, res) {
 	try {
 		const body = req.body
-		// console.log(body);
+		console.log(body);
 
 		if (Object.keys(body).length == 0) return res.status(400).send({ status: false, message: "Please fill data in body" })
 
