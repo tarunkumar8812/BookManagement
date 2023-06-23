@@ -1,7 +1,7 @@
 
 import React, { useContext, useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { faBars, faCartShopping, faPowerOff, faSearch, faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { faBars, faCartShopping, faMagnifyingGlass, faPowerOff, faSearch, faUser, faUserPlus, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import "./navbar.css";
@@ -12,6 +12,7 @@ import axios from 'axios';
 
 const Navbar = () => {
     const navigate = useNavigate()
+    const winSize = window.innerWidth
     // --------------- states management ---------------
     const [showMenu, setShowMenu] = useState(true)
     const [search, setSearch] = useState("")
@@ -75,26 +76,6 @@ const Navbar = () => {
         const key_words = e.target.value.split(" ").filter(word => word.trim() !== "")//.filter(whiteSpace=> word !== "")
         console.log("key_words", key_words);
 
-
-
-        // r = key_words.map((word) =>
-        //     fetchData?.filter((book) =>
-        //         book.author.toLowerCase().includes(word) || book.title.toLowerCase().includes(word) || book.category.toLowerCase().includes(word)
-        //     )
-        // ).flat(1)
-
-        // r.map((i) => {
-        //     // console.log(i._id);
-        //     count[i._id] = count[i._id] ? count[i._id] + 1 : 1;
-        // })
-        // console.log("r", r);
-        // console.log("count", count);
-
-
-        // console.log(newSearch, e.target.value);
-        // console.log("bookData", bookData);
-
-        // dispatch({ type: "NEW_SEARCH", payload: { newSearch: e.target.value, data: bookData } })
     }
 
 
@@ -103,38 +84,34 @@ const Navbar = () => {
     //     setSearch(e.target.name = e.target.value)
     // }
     async function searchBook(val) {
-        // console.log(setSearch(search))
-        // dispatch({ type: "RESET_SEARCH", payload: { data: bookData } })
         navigate("/getbook", { state: val })
-
-        // const response = await fetch("http://localhost:5000/searchBook", {
-        //     method: "POST",
-        //     headers: { "Content-Type": "application/json", "authToken": localStorage.getItem("authToken") },
-        //     body: JSON.stringify({ title: search }),// converting simple object to json format
-        //     // authToken: localStorage.getItem("authToken")// to save jwt token in header to use it
-
-        // })
-        // console.log(response);
-
-        // const json = await response.json()
-        // console.log(json);
     }
 
 
     return (
         <>
-            <div className="navbar">
-                <Link to='/'>
-                    <div className='logo'>
-                        <img src="https://t3.ftcdn.net/jpg/04/83/17/70/360_F_483177004_1oM8bltG2ZGIIdlem8W2v18LYRlUM1tQ.jpg" alt="Facebook" />
-                        <h2>ReadersClub.in</h2>
+
+            <nav>
+                <div className='logo'>
+                    <NavLink to="/">
+                        <img className='logo_img' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRdLT6HFo0OyTrVKs8PliE8x79VBTS8w84cooLSdtE_w&s' alt='logo'></img>
+                    </NavLink>
+                </div>
+
+
+                <div className='search'>
+
+                    <div className='search_bar'>
+                        <input type="text" placeholder=' Search by Title, Author' name='search' className='search_input' autoComplete='off' onChange={handleSearch} defaultValue={search}></input>
+
+
+                        <div className='search_btn'>
+                            <FontAwesomeIcon icon={faMagnifyingGlass} size="xl" />
+                        </div>
                     </div>
-                </Link>
 
-                <form className='serach-box'>
-                    <input type="text" className='search-bar' placeholder=' Search by Title, Author' name='search' autoComplete='off' onChange={handleSearch} defaultValue={search}></input>
 
-                    <button onClick={searchBook} className='search-btn'><Link to="/">Search</Link></button>
+
 
                     <div className='s_suggestion'>
                         {search.length > 0 &&
@@ -156,38 +133,38 @@ const Navbar = () => {
                             </ul>
                         }
                     </div>
-
-                </form>
-
-
-                <div className="nav-menu" onClick={handleMenu}>
-                    <FontAwesomeIcon className='menu-icon' icon={faBars} size="xl" />
-                    {showMenu && <ul>
-
-                        {user ?
-                            <>
-                                <li onClick={logout}><Link to="/login"> <FontAwesomeIcon size="sm" icon={faPowerOff} /> Logout</Link></li>
-                                {/* <li onClick={"profile"}><Link to="/profile"> <FontAwesomeIcon size="sm" icon={faIdCard} /> Profile</Link></li> */}
-                            </> :
-                            <>
-                                <li><Link to="/login"> <FontAwesomeIcon size="sm" icon={faUser} /> Login</Link></li>
-                                <li><Link to="/signup"> <FontAwesomeIcon size="sm" icon={faUserPlus} />SignUp</Link></li>
-                            </>
-                        }
-                        <li >
-                            {true &&
-                                <div className='cart_notification'><p>{"2"}</p>
-                                </div>
-                            }
-                            <Link to="/cart" className='cart'> <FontAwesomeIcon size="md" icon={faCartShopping} /> Cart</Link>
-
-                        </li>
-
-                    </ul>}
-
                 </div>
 
-            </div>
+
+
+
+
+                {/* -------------------- completed -------------------- */}
+                <div className={winSize > 900 && showMenu ? "navlinks" : showMenu ? "mobile_view_show" : "mobile_view_hide"}>
+                    <ul className='navlink_box'>
+                        {user ?
+                            <>
+                                <li className='action_btns' onClick={logout}><NavLink to="/login"> <FontAwesomeIcon size="sm" icon={faPowerOff} /> Logout</NavLink></li>
+                            </> :
+                            <>
+                                <li className='action_btns'><NavLink to="/login"><FontAwesomeIcon size="sm" icon={faUser} /> Login</NavLink> </li>
+                                <li className='action_btns'><NavLink to="/signup"><FontAwesomeIcon size="sm" icon={faUserPlus} /> Signup</NavLink> </li>
+                            </>
+                        }
+                        <li className='action_btns'><NavLink to='cart'> <p className='notifi'>5</p><FontAwesomeIcon size="lg" icon={faCartShopping} /> Cart</NavLink></li>
+
+                    </ul>
+                </div>
+
+
+                <div className='menu' onClick={() => { handleMenu() }}>
+
+                    {!showMenu && <FontAwesomeIcon className='menu_img' icon={faBars} size="xl" />}
+
+                    {showMenu && <FontAwesomeIcon className='menu_img' icon={faXmark} size="xl" />}
+
+                </div>
+            </nav>
         </>
     )
 }
