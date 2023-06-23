@@ -86,13 +86,12 @@ nav {
     top: 32px;
     background-color: white;
     width: 100%;
-    z-index: 3;
 }
 
 
 .s_suggestion_box {
     width: 98%;
-
+    
 }
 
 .box_ul_li {

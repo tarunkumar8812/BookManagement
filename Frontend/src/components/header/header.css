@@ -1,9 +1,10 @@
 .header {
     background-color: rgb(210, 220, 231);
-    margin-top: 7vh;
+    /* margin-top: 7vh; */
     display: flex;
     align-items: center;
     position: relative;
+    z-index: -1;
 }
 
 .header-options {

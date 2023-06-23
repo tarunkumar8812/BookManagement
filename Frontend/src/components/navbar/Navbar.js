@@ -120,7 +120,7 @@ const Navbar = () => {
                                     fetchData?.filter((val) =>
                                         val.author.includes(search) || val.title.includes(search) || val.category.includes(search)
 
-                                    ).slice(0, 10).map((book) => {
+                                    ).slice(0, 9).map((book) => {
                                         return <>
                                             <li className='box_ul_li' onClick={() => { searchBook(book) }} >
 
