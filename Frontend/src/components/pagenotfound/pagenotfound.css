@@ -1,5 +1,6 @@
 .pagenotfound {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100vw;
@@ -11,5 +12,16 @@
 .pagenotfound p {
     font-size: 60px;
     color: black;
+
+}
+
+.goBackToHome {
+    font-size: 10px;
+    text-decoration: underline;
+}
+
+.goBackToHome:hover {
+    cursor: pointer;
+    color: red;
 
 }

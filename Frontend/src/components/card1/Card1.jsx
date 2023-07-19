@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 
-const Card1 = ({ heading, field, val, sort }) => {
+const Card1 = ({ width, heading, field, val, sort }) => {
 
     const navigate = useNavigate()
 
@@ -59,7 +59,7 @@ const Card1 = ({ heading, field, val, sort }) => {
                 </div>
             }
 
-            {!loading && <div className='card_container'>
+            {!loading && <div className='card_container' style={{ width: width, margin: "auto" }}>
                 {slider < 0 && <div className='arrows l_arrow' onClick={() => { handleSlider("l") }}> <img className='arrow_img' src='https://freepngimg.com/save/163768-arrow-left-free-photo/512x512' alt='l_arrow' /></div>
                 }
                 <div className='arrows r_arrow' onClick={() => { handleSlider("r") }}> <img className='arrow_img' src='https://www.freeiconspng.com/thumbs/arrow-icon/arrow-icon--myiconfinder-23.png' alt='r_arrow' /></div>
@@ -71,15 +71,15 @@ const Card1 = ({ heading, field, val, sort }) => {
                     <div className="seeall" onClick={handleFilter}>See All</div>
                 </div>
 
-                <div className='card_slider' style={{ left: `${slider * 150}px` }}>
+                <div className='card_slider' style={{ width: width, left: `${slider * 150}px` }}>
                     {
                         data.filter((item) => isNaN(val) ? item[field] === val : item[field] >= val)
                             .sort((a, b) => sort ? b[field] - a[field] : "")
                             .map((book) => {
                                 return (<>
                                     <div className="book_box" onClick={() => { navigate('/getbook', { state: book }) }}>
-                                        <div className="book_img_container">
-                                            <img src={book?.bookCover} alt="bookcover"></img>
+                                        <div style={{ overflow: 'hidden', backgroundColor: "#b7ccbf" }} className="book_img_container">
+                                            <img style={{ height: "100%" }} src={book?.bookCover} alt="bookcover"></img>
                                         </div>
 
                                         <div className="book_details">

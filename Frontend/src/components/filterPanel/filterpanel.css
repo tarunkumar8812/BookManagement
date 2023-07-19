@@ -58,17 +58,16 @@
 }
 
 .showMore {
-    position: absolute;
-    right: 10px;
+    margin-right: auto;
 }
 
-.showMore p {
+.showMore {
     color: black;
     text-decoration: underline;
     font-size: 12px;
 }
 
-.showMore p:hover {
+.showMore:hover {
     cursor: pointer;
     color: red;
 
@@ -121,4 +120,11 @@ h3 {
     /* margin-top: 15px; */
     padding-top: 15px;
     font-size: medium;
+}
+
+
+@media(max-width:900px) {
+    .filter_panel_container {
+        display: none;
+    }
 }

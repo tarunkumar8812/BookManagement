@@ -111,7 +111,7 @@ const FilterPanel = () => {
                                 <input type='checkbox' key={id} onClick={() => { handleFilter("category", cate._id) }}></input>  {cate._id} </li></>)
                         })}
                     </ul>
-                    <div className='showMore' onClick={() => { setShowAllCategories(!showAllCategories) }}>{showAllCategories ? <p> less </p> : <p> more </p>}</div>
+                    <p className='showMore' onClick={() => { setShowAllCategories(!showAllCategories) }}> {showAllCategories ? "less" : "more"} </p>
                 </div>
 
 
@@ -140,10 +140,10 @@ const FilterPanel = () => {
                     <div className='showMore' onClick={() => { setShowAllLanguages(!showAllLanguages) }}>{showAllLanguages ? <p> less </p> : <p> more </p>}</div>
                 </div>
 
-                <div className='search-by'>
+                {false && <div className='search-by'>
                     <label for="points"><h3>min 0 max 1000</h3></label>
                     <input type="range" id="points" name="points" min="0" max="1000" onChange={() => { setMaxPrice(99999) }} />
-                </div>
+                </div>}
 
                 <div className='search-by'>
                     <label><h3>Search by Ratings</h3></label>

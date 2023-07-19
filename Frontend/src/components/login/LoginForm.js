@@ -4,7 +4,7 @@ import "./loginform.css"
 import { AuthContext } from '../../context/AuthContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
-import axios from "axios";
+import axios from "axios"
 
 
 const Loginform = () => {

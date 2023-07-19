@@ -23,6 +23,7 @@ function App() {
           <Route path='/payment' element={<Payment />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/getbook' element={<GetBook />} />
+          <Route path='/pagenotfound' element={<NotFound />} />
           <Route path='/*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>

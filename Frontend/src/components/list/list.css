@@ -23,7 +23,7 @@
 
 .top_header {
     width: 80%;
-    margin:atuo;
+    margin: atuo;
     position: absolute;
     display: flex;
     justify-content: space-between;
@@ -51,6 +51,9 @@
     outline: none;
 }
 
+.sort:hover {
+    cursor: pointer;
+}
 
 
 .list_book_box {
@@ -359,6 +362,6 @@ p {
     margin: auto;
 }
 
-input:hover{
+input:hover {
     cursor: pointer;
 }

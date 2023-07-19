@@ -1,14 +1,13 @@
 import React from 'react'
 // import FilterPanel from '../components/filterPanel/FilterPanel'
+import PageNotFound from '../components/pagenotfound/PageNotFound'
 
 const Cart = () => {
   return (<>
 
 
-    <div>Cart</div>
-    <div>Cart</div>
-    <div>Cart</div>
-    <div>Cart</div>
+    <div><PageNotFound></PageNotFound></div>
+
 
     {/* <FilterPanel /> */}
   </>

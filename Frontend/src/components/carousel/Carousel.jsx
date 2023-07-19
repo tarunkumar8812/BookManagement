@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import "./carousel.css"
 import { faCircleArrowLeft, faCircleArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import "./carousel.css"
 const Carousel = () => {
 
     const arr = [

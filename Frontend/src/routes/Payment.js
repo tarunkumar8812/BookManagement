@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from 'react'
 import { AuthContext } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
+import PageNotFound from '../components/pagenotfound/PageNotFound'
+
 
 const Payment = () => {
     const navigate = useNavigate()
@@ -13,7 +15,7 @@ const Payment = () => {
     })
 
     return (
-        <div>Payment</div>
+        <div><PageNotFound /></div>
     )
 }
 
