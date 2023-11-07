@@ -6,7 +6,7 @@ const createUser = async function (req, res) {
 	try {
 		const body = req.body
 		// const { title, name, phone, email, password, address, ...rest } = req.body
-		const {  fullname, phone, email, password } = req.body
+		const { fullname, phone, email, password } = req.body
 
 		if (Object.keys(body).length == 0) return res.status(400).send({ status: false, message: "Please fill data!!" })
 
@@ -49,7 +49,7 @@ const createUser = async function (req, res) {
 
 		//  -------------- creating new user --------------
 		const data = await userModel.create({ fullname, phone, email, password })
-		return res.status(201).send({ status: true, message: "User successfully Registerd", data: data })
+		return res.status(201).send({ status: true, message: "Registerd successfully", data: data })
 	}
 	catch (err) {
 		return res.status(500).send({ status: false, message: err.message })
@@ -98,7 +98,7 @@ const userLogin = async function (req, res) {
 		}
 
 		// res.status(200).json({ status: true, message: "Token has been generated successfully.", data: data, bookslist: bookInDataBase });
-		res.status(200).json({ status: true, message: "Token generated successfully.", data });
+		res.status(200).json({ status: true, message: "Login successfully.", data });
 	}
 	catch (err) {
 		res.status(500).send({ status: false, message: err.message })
