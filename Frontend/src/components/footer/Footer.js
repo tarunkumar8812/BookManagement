@@ -86,7 +86,7 @@ const Footer = () => {
 
         {/* ------------------------------- */}
         <div class="copyright">
-          Copyright © 2023 . Bookswagon.com. <span class="allrightreserve">All Rights Reserved</span>
+          Copyright © 2023 . ReadersClub.com <span class="allrightreserve">All Rights Reserved</span>
         </div>
       </div>
     </>

@@ -1,5 +1,4 @@
 const userModel = require("../model/userModel")
-
 const jwt = require('jsonwebtoken')
 
 //<-------------------------------------------- Create User API ------------------------------------------->
@@ -7,15 +6,15 @@ const createUser = async function (req, res) {
 	try {
 		const body = req.body
 		// const { title, name, phone, email, password, address, ...rest } = req.body
-		const { title, name, phone, email, password, ...address } = req.body
+		const {  fullname, phone, email, password } = req.body
 
-		if (Object.keys(body).length == 0) return res.status(400).send({ status: false, message: "Please fill data in body" })
+		if (Object.keys(body).length == 0) return res.status(400).send({ status: false, message: "Please fill data!!" })
 
 		// if (Object.keys(rest).length > 0) return res.status(400).send({ status: false, message: `You can not fill these:-( ${Object.keys(rest)} ) data ` })
 
-		if (validTitle(title) != true) return res.status(400).send({ status: false, message: `${validTitle(title)}` })
+		// if (validTitle(title) != true) return res.status(400).send({ status: false, message: `${validTitle(title)}` })
 
-		if (validName(name) != true) return res.status(400).send({ status: false, message: `${validName(name)}` })
+		if (validName(fullname) != true) return res.status(400).send({ status: false, message: `${validName(fullname)}` })
 
 		if (validPhone(phone) != true) return res.status(400).send({ status: false, message: `${validPhone(phone)}` })
 
@@ -26,30 +25,30 @@ const createUser = async function (req, res) {
 
 		// if (validAddress(address) != true) return res.status(400).send({ status: false, message: `${validAddress(address)}` })
 
-		const { street, city, pincode } = address
+		// const { street, city, pincode } = address
 
-		if (validStreet(street) != true) return res.status(400).send({ status: false, message: `${validStreet(street)}` })
+		// if (validStreet(street) != true) return res.status(400).send({ status: false, message: `${validStreet(street)}` })
 
-		if (validCity(city) != true) return res.status(400).send({ status: false, message: `${validCity(city)}` })
+		// if (validCity(city) != true) return res.status(400).send({ status: false, message: `${validCity(city)}` })
 
-		if (validPincode(pincode) != true) return res.status(400).send({ status: false, message: `${validPincode(pincode)}` })
+		// if (validPincode(pincode) != true) return res.status(400).send({ status: false, message: `${validPincode(pincode)}` })
 
 
 
 		//  ------- checking uniqueness of phone no. -------
 		let phone_in_DB = await userModel.findOne({ phone: phone })
-		if (phone_in_DB) return res.status(409).send({ status: false, message: "Phone no. is already registered" })
+		if (phone_in_DB) return res.status(409).send({ status: false, message: "Phone Number is already registered" })
 
 
 
 		//  ---------checking uniqueness of email ---------
-		let email_in_DB = await userModel.create//({ email: email })
-		// let email_in_DB = await userModel.findOne({ email: email })
+		// let email_in_DB = await userModel.create//({ email: email })
+		let email_in_DB = await userModel.findOne({ email: email })
 		if (email_in_DB) return res.status(409).send({ status: false, message: "Email is already registered" })
 
 
 		//  -------------- creating new user --------------
-		const data = await userModel.create({ title, name, phone, email, password, address })
+		const data = await userModel.create({ fullname, phone, email, password })
 		return res.status(201).send({ status: true, message: "User successfully Registerd", data: data })
 	}
 	catch (err) {
@@ -63,22 +62,20 @@ const createUser = async function (req, res) {
 const userLogin = async function (req, res) {
 	try {
 		const body = req.body
-		console.log(body);
 
-		if (Object.keys(body).length == 0) return res.status(400).send({ status: false, message: "Please fill data in body" })
+		if (Object.keys(body).length == 0) return res.status(400).send({ status: false, message: "Please fill data!!" })
 
 		const { email, password, ...rest } = req.body
 
-		if (Object.keys(rest).length > 0) return res.status(400).send({ status: false, message: `You can not fill these:-( ${Object.keys(rest)} ) data` })
+		// if (Object.keys(rest).length > 0) return res.status(400).send({ status: false, message: `You can not fill these:-( ${Object.keys(rest)} ) data` })
 
 		// if (validEmail(email) != true) return res.status(400).send({ status: false, message: `${validEmail(email)}` })
 
 		// ------------------ api call ------------------
 		let user = await userModel.findOne({ email, isDeleted: false });
+		if (!user) return res.status(401).json({ status: false, message: "User not fonud!" })
 
-		if (!user) return res.status(401).json({ status: false, message: "User not fonud !" })
-
-		if (password != user.password) return res.status(401).json({ status: false, message: "Wrong password !" })
+		if (password != user.password) return res.status(401).json({ status: false, message: "Wrong password!" })
 
 
 		// let bookInDataBase = await bookModel.find();
