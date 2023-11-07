@@ -14,13 +14,13 @@ const createUser = async function (req, res) {
 
 		// if (validTitle(title) != true) return res.status(400).send({ status: false, message: `${validTitle(title)}` })
 
-		if (validName(fullname) != true) return res.status(400).send({ status: false, message: `${validName(fullname)}` })
+		// if (validName(fullname) != true) return res.status(400).send({ status: false, message: `${validName(fullname)}` })
 
-		if (validPhone(phone) != true) return res.status(400).send({ status: false, message: `${validPhone(phone)}` })
+		// if (validPhone(phone) != true) return res.status(400).send({ status: false, message: `${validPhone(phone)}` })
 
-		if (validEmail(email) != true) return res.status(400).send({ status: false, message: `${validEmail(email)}` })
+		// if (validEmail(email) != true) return res.status(400).send({ status: false, message: `${validEmail(email)}` })
 
-		if (validPassword(password) != true) return res.status(400).send({ status: false, message: `${validPassword(password)}` })
+		// if (validPassword(password) != true) return res.status(400).send({ status: false, message: `${validPassword(password)}` })
 
 
 		// if (validAddress(address) != true) return res.status(400).send({ status: false, message: `${validAddress(address)}` })
