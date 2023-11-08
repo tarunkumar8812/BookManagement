@@ -5,6 +5,9 @@ const jwt = require('jsonwebtoken')
 const createUser = async function (req, res) {
 	try {
 		const body = req.body
+
+		console.log(body);
+		
 		// const { title, name, phone, email, password, address, ...rest } = req.body
 		const { fullname, phone, email, password } = req.body
 
