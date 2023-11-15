@@ -1,3 +1,4 @@
+const cartModel = require("../model/cartModel");
 const userModel = require("../model/userModel")
 const jwt = require('jsonwebtoken')
 
@@ -6,7 +7,7 @@ const createUser = async function (req, res) {
 	try {
 		const body = req.body
 
-		console.log(body);
+		// console.log(body);
 
 		const { fullname, phone, email, password } = req.body
 
@@ -25,9 +26,33 @@ const createUser = async function (req, res) {
 
 
 		//  -------------- creating new user --------------
-		const data = await userModel.create({ fullname, phone, email, password })
-		return res.status(201).send({ status: true, message: "Registered successfully", data: data })
+		const newUser = await userModel.create({ fullname: fullname.toLowerCase(), phone, email, password })
+
+		if (!newUser) {
+			return res.status(400).send({ status: false, message: "User Registration failed!!" })
+		}
+		// console.log("newUser", newUser);
+		// console.log("newUser", newUser._id);
+
+
+		//  -------------- creating cart of new user --------------
+		let newCart = await cartModel.create(
+			{
+				userId: newUser._id.toString(),
+				items: [],
+				totalPrice: 0,
+				totalItems: 0
+			})
+
+		if (!newCart) {
+			return res.status(400).send({ status: false, message: "cart is not created!!" })
+		}
+		// console.log("newCart", newCart);
+
+
+		return res.status(201).send({ status: true, message: "Registered successfully" })
 	}
+
 	catch (err) {
 		return res.status(500).send({ status: false, message: err.message })
 	}

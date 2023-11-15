@@ -5,7 +5,7 @@ const userModel = require('../model/userModel')
 
 //  <--------------------------------------------------- Get Books API --------------------------------------------------->
 
-const books = async function (req, res) {
+const getAllBooks = async function (req, res) {
     try {
         console.log("req.body", req.body);
 
@@ -183,4 +183,4 @@ const getBooks = async function (req, res) {
     }
 }
 
-module.exports = { getBooks, groupData, books }
+module.exports = { getBooks, groupData, getAllBooks }
