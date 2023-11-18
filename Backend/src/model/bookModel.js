@@ -6,13 +6,10 @@ const bookSchema = new mongoose.Schema({
         type: String,
         requried: true,
         unique: true,
-        trim: true
+        trim: true,
     },
     author: {
         type: String,
-    },
-    tags: {
-        type: [String],
     },
     price: {
         type: Number, requried: true
@@ -34,14 +31,12 @@ const bookSchema = new mongoose.Schema({
         requried: true,
         trim: true
     },
-    authorId: {
-        type: objectId,
-        required: true
-    },
-    // userId: {
+    // authorId: {
     //     type: objectId,
-    //     ref: "User",
     //     required: true
+    // },
+    // tags: {
+    //     type: [String],
     // },
     isPublished: {
         type: Boolean
@@ -108,7 +103,8 @@ const bookSchema = new mongoose.Schema({
         type: String
     },
     isAvailable: {
-        type: Boolean
+        type: Boolean,
+        default: true
     },
     availableQuantity: {
         type: Number
